@@ -10,32 +10,6 @@
   </ul>
 </div>
 @endif
-
-{{-- نموذج إضافة تعليق --}}
-<form action="{{ route('comments.store') }}" method="POST" style="margin-bottom:2rem;">
-  @csrf
-  {{-- قائمة منسدلة لاختيار الموظف --}}
-  <div class="form-group" style="margin-bottom:1rem;">
-    <label for="employee_id">اختر الموظف / Select Employee</label>
-    <select name="employee_id" id="employee_id" class="form-control" required>
-      <option value="">-- اختر الموظف --</option>
-      @foreach($allEmployees as $emp)
-        <option value="{{ $emp->id }}" {{ (isset($employee) && $employee->id == $emp->id) ? 'selected' : '' }}>
-          {{ $emp->first_name }} {{ $emp->last_name }} (ID: {{ $emp->id }})
-        </option>
-      @endforeach
-    </select>
-  </div>
-  <div>
-    <label for="author">اسمك / Your Name</label>
-    <input type="text" name="author" id="author" class="form-control" required>
-  </div>
-  <div>
-    <label for="body">التعليق / Comment</label>
-    <textarea name="body" id="body" class="form-control" rows="3" required></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary" style="margin-top:1rem;">إرسال التعليق / Submit</button>
-</form>
 {{-- عرض تفاصيل الموظف --}}
 <div class="container">
   {{-- جدول التفاصيل --}}
@@ -81,9 +55,9 @@
             @else
             @foreach($comments as $comment)
             <div class="mb-3">
-              <strong> author : {{ $comment->author }}<br></strong>
+              <p> author : {{ $comment->author }}<br></strong>
               <span class="text-secondary">created at : {{ $comment->created_at->diffForHumans() }} </span>
-              <p> comment : {{ $comment->body }}</p>
+              <p> comment : {{ $comment->body }}</p><hr>
             </div>
             @endforeach
             @endif

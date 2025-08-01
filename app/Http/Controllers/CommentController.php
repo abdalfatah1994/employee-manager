@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     // الكلمات الممنوعة للفلترة
-    protected $blockedWords = ['spam', 'viagra', 'casino'];
+    protected $blockedWords = ['bad', 'مرفوض', 'كسول', 'غير لائق'];
 
     public function store(Request $request)
     {

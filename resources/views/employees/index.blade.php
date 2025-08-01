@@ -127,8 +127,6 @@
         margin-bottom: 1rem !important;
     }
 </style>
-
-
 <h1 class="caption"> جدول عرض الموظفين / Employees data table</h1>
 <table class="table-custom">
     <thead>
@@ -158,7 +156,6 @@
                     تعديل / Edit
                 </a>
             </td>
-
             <td>
                 <form
                     action="{{ route('employees.destroy', $emp) }}"
@@ -172,7 +169,6 @@
                     </button>
                 </form>
             </td>
-
             <td>
                 <a href="{{ route('employees.show', $emp) }}" class="btn btn-sm btn-info">
                     تفاصيل / Details
@@ -180,14 +176,19 @@
             </td>
             @endforeach
     </tbody>
+    <br>
 </table>
+<hr>
 <br>
 <div>
-    <a href="{{ route('employees.create') }}" class="btn btn-primary mb-3">
+    <a href="{{ route('employees.create') }}" class="btn btn-secondary">
         إضافة موظف جديد / Add New Employee
     </a>
     <a href="{{ route('views-welcome') }}" class="btn btn-secondary">
         الذهاب الى الصفحة الرئيسية / Go home page
+    </a>
+    <a href="{{ route('employees-comments') }}" class="btn btn-secondary">
+        الذهاب الى صفحة التعليقات / Go to comments page
     </a>
 </div>
 {{ $employees->links() }}
