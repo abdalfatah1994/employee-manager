@@ -72,9 +72,10 @@ class EmployeeController extends Controller
         $employee->delete();
         return back()->with('success', 'تم حذف الموظف بنجاح');
     }
-    public function show(Employee $employee)
-    {
-        $comments = $employee->comments()->latest()->get(); // إذا كنت تستدعي التعليقات
-        return view('employees.show', compact('employee', 'comments'));
-    }
+public function show(Employee $employee)
+{
+    $comments = $employee->comments()->latest()->get();
+    $allEmployees = \App\Models\Employee::all();
+    return view('employees.show', compact('employee', 'comments', 'allEmployees'));
+}
 }

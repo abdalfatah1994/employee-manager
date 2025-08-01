@@ -182,10 +182,14 @@
     </tbody>
 </table>
 <br>
-{{-- زر إضافة موظف جديد / Add New Employee button --}}
-<a href="{{ route('employees.create') }}" class="btn btn-primary mb-3">
-    إضافة موظف جديد / Add New Employee
-</a>
+<div>
+    <a href="{{ route('employees.create') }}" class="btn btn-primary mb-3">
+        إضافة موظف جديد / Add New Employee
+    </a>
+    <a href="{{ route('views-welcome') }}" class="btn btn-secondary">
+        الذهاب الى الصفحة الرئيسية / Go home page
+    </a>
+</div>
 {{ $employees->links() }}
 
 @endsection

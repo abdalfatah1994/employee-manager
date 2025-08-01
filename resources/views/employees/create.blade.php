@@ -315,6 +315,10 @@
       <a href="{{ route('employees.index') }}" class="btn btn-secondary">
         إلغاء / Cancel
       </a>
+      <a href="{{ route('views-welcome') }}" class="btn btn-secondary">
+        الذهاب الى الصفحة الرئيسية / Go home page
+      </a>
+      
     </div>
   </form>
 </div>

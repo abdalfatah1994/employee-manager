@@ -2,32 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-namespace App\Http\Controllers;
-
 use App\Models\Employee;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    protected $forbidden = ['spamword1','spamword2','كلمة_ممنوعة'];
+    // الكلمات الممنوعة للفلترة
+    protected $blockedWords = ['spam', 'viagra', 'casino'];
 
-    public function store(Request $request, Employee $employee)
+    public function store(Request $request)
     {
+        // تحقق من صحة البيانات المدخلة
         $data = $request->validate([
-            'author' => 'required|string|max:100',
-            'body'   => ['required','string', function($attr, $value, $fail) {
-                foreach ($this->forbidden as $word) {
-                    if (stripos($value, $word) !== false) {
-                        return $fail('تم رفض التعليق لاحتوائه على محتوى غير مناسب');
-                    }
-                }
-            }],
+            'author' => 'required|string|max:50',
+            'body'   => 'required|string|max:500',
+            'employee_id' => 'required|exists:employees,id',
         ]);
 
-        $employee->comments()->create($data);
+        // فلترة الكلمات الممنوعة في التعليق
+        foreach ($this->blockedWords as $word) {
+            if (stripos($data['body'], $word) !== false) {
+                return back()->withInput()->withErrors(['body' => 'تم رفض التعليق لاحتوائه على محتوى غير مناسب']);
+            }
+        }
+
+        // حفظ التعليق وربطه بالموظف المختار
+        Comment::create([
+            'author'      => $data['author'],
+            'body'        => $data['body'],
+            'employee_id' => $data['employee_id'],
+        ]);
+
+        // رسالة نجاح
         return back()->with('success', 'تم إضافة التعليق بنجاح');
     }
 }

@@ -5,6 +5,10 @@ use App\Http\Controllers\CommentController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('WELCOME-PAGE', function () {
+    return view('welcome');
+})->name('views-welcome');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +19,9 @@ Route::get('/', function () {
 */
 Route::resource('employees', EmployeeController::class);
 Route::get('employees/{employee}', [EmployeeController::class, 'show'])->name('employees.show');
+
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
 /*
 |--------------------------------------------------------------------------
 | إضافة تعليق لموظف محدد
