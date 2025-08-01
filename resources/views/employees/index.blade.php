@@ -36,7 +36,7 @@
         transform: translateY(-2px);
     }
 
-    .table-custom caption {
+    .caption {
         background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
         padding: .75rem 1rem;
         width: 100%;
@@ -44,6 +44,7 @@
         font-weight: 800;
         border-collapse: collapse;
         border-radius: 8px;
+        text-align: center;
     }
 
     .table-custom {
@@ -128,8 +129,8 @@
 </style>
 
 
+<h1 class="caption"> جدول عرض الموظفين / Employees data table</h1>
 <table class="table-custom">
-    <caption> جدول عرض الموظفين / Employees data table</caption>
     <thead>
         <tr>
             <th>الاسم الكامل <br> Full Name</th>
