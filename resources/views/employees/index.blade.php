@@ -51,9 +51,7 @@
         width: 100%;
         border-collapse: collapse;
         background: #fff;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 20px;
     }
 
     .table-custom th,
@@ -68,6 +66,10 @@
         font-weight: 600;
         text-align: center;
         padding: .75rem 1rem;
+    }
+
+    .table-custom tbody tr:last-child {
+        border: black 3px solid;
     }
 
     .table-custom tbody td {
@@ -142,7 +144,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($employees as $emp)
+        @forelse($employees as $emp)
         <tr>
             <td>{{ $emp->first_name }} {{ $emp->last_name }}</td>
             <td>{{ $emp->rank }}</td>
@@ -174,13 +176,16 @@
                     تفاصيل / Details
                 </a>
             </td>
-            @endforeach
+        </tr>
+        @empty
+        <tr>
+            <td colspan="10" style="text-align:center;">لا يوجد موظفين حالياً</td>
+        </tr>
+        @endforelse
     </tbody>
-    <br>
 </table>
-<hr>
 <br>
-<div>
+<div class="mb-3" style="text-align: center; flex-direction: column; display: flex; gap: 10px;">
     <a href="{{ route('employees.create') }}" class="btn btn-secondary">
         إضافة موظف جديد / Add New Employee
     </a>

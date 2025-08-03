@@ -67,7 +67,7 @@
     </table>
     <hr><br>
     <span class="text-right">
-      <a href="{{ route('employees.index') }}" class="btn-primary" style=" font-size: 24px;margin: 10px ;padding: 10px;text-decoration: none;"> الرجوع لصفحة الموظفين / Back to employees</a>
+      <a href="{{ route('employees.index') }}" class="btn btn-primary mb-3" style=" font-size: 24px;margin: 10px ;padding: 10px;text-decoration: none;"> الرجوع لصفحة الموظفين / Back to employees</a>
       <button onclick="window.print()" class="btn-primary" style=" font-size: 24px;margin: 15px ;padding: 15px 5px;">🖨 طباعة / Print</button>
       <a href="{{ route('views-welcome') }}" class="btn btn-secondary"> الذهاب الى الصفحة الرئيسية / Go home page </a>
     </span>

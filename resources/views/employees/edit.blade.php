@@ -320,10 +320,10 @@
       <button type="submit" class="btn btn-primary">
         حفظ التعديلات / Save Changes
       </button>
-      <a href="{{ route('employees.index') }}" class="btn btn-secondary">
+      <a href="{{ route('employees.index') }}" class="btn btn-primary mb-3">
         العودة / Back
       </a>
-            <a href="{{ route('views-welcome') }}" class="btn btn-secondary">
+            <a href="{{ route('views-welcome') }}" class="btn btn-primary mb-3">
         الذهاب الى الصفحة الرئيسية / Go home page
       </a>
 
