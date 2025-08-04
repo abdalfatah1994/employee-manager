@@ -20,6 +20,8 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
+        redirect()->route('employees.index')
+            ->with('success', 'تم إضافة الموظف بنجاح / Employee added successfully');
         $data = $request->validate([
             'first_name' => 'required|string|max:50',
             'last_name'  => 'required|string|max:50',
@@ -60,11 +62,11 @@ class EmployeeController extends Controller
 
         $employee->update($data);
 
-        // بعد التحديث: إعادة توجيه إلى صفحة التعديل + فلاش رسالة + رابط ومدة إعادة التوجيه
+        // بعد التحديث: إعادة توجيه إلى صفحة التعديل +   رابط ومدة إعادة التوجيه
         return redirect()
-            ->route('employees.edit', $employee)
+            ->route('employees.index')
             ->with('success', 'تم تحديث بيانات الموظف بنجاح / Employee updated successfully')
-            ->with('redirectTo', route('employees.index'))
+            // ->with('redirectTo', route('employees.index'))
             ->with('redirectDelay', 3000); // بالمللي ثانية
     }
     public function destroy(Employee $employee)

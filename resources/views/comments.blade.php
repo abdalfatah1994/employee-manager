@@ -1,3 +1,7 @@
+    <link rel="icon" href="{{ asset('icon_2.png') }}" type="image/x-icon">
+    <title> Employee Comment </title> 
+
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
 
